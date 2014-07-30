@@ -84,4 +84,14 @@ Rails.application.configure do
 
   # NOTE!! Set this to actual host name!
   config.action_mailer.default_url_options = { host: 'http://lmowerpinteresting.herokuapp.com' }
+
+  # Sets paperclip to upload images to Amazon Web Servies (s3)
+  config.paperclip_defaults = {
+  :storage => :s3,
+  :s3_credentials => {
+    :bucket => ENV['AWS_BUCKET'],
+    :access_key_id => ENV['AWS_ACCESS_KEY_ID'],
+    :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
+  }
+}
 end
